@@ -3,8 +3,15 @@ import 'package:lab2_211084/models/joke.dart';
 
 class JokeCard extends StatelessWidget {
   final Joke joke;
+  final bool isFavorite;
+  final void Function(Joke) onFavorite;
 
-  const JokeCard({super.key, required this.joke});
+  const JokeCard({
+    super.key,
+    required this.joke,
+    required this.isFavorite,
+    required this.onFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +23,20 @@ class JokeCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              joke.setup ?? "No setup",
+              joke.setup,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Text(
-              joke.punchline ?? "No punchline",
+              joke.punchline,
               style: const TextStyle(fontSize: 16),
+            ),
+            IconButton(
+              icon: Icon(
+                isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: isFavorite ? Colors.red : Colors.grey,
+              ),
+              onPressed: () => onFavorite(joke),
             ),
           ],
         ),

@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lab2_211084/models/joke.dart';
 
@@ -8,7 +5,15 @@ import '../services/api_services.dart';
 import '../widgets/jokes/joke_list.dart';
 
 class JokesFromType extends StatefulWidget {
-  const JokesFromType({super.key});
+  final List<Joke> jokes;
+  final void Function(Joke) onFavorite;
+
+  const JokesFromType({
+    super.key,
+    required this.jokes,
+    required this.onFavorite,
+  });
+
 
   @override
   State<JokesFromType> createState() => _JokesState();
@@ -17,6 +22,7 @@ class JokesFromType extends StatefulWidget {
 class _JokesState extends State<JokesFromType> {
   late String jokeType;
   List<Joke> jokes = [];
+  late final void Function(Joke) onFavorite;
 
   @override
   void didChangeDependencies() {
@@ -49,6 +55,9 @@ class _JokesState extends State<JokesFromType> {
                 "Jokes loading",
                 style: TextStyle(fontSize: 18),
               )
-            : JokeList(jokes: jokes));
+            : JokeList(
+            jokes: jokes,
+            onFavorite: widget.onFavorite,
+        ));
   }
 }

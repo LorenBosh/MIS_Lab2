@@ -1,12 +1,20 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:lab2_211084/screens/jokes_from_type.dart';
 import 'package:lab2_211084/services/api_services.dart';
 import 'package:lab2_211084/widgets/types/type_list.dart';
 
+import '../models/joke.dart';
+
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final void Function(Joke) onFavorite;
+  final List<Joke> favoriteJokes;
+
+  const Home({
+    super.key,
+    required this.onFavorite,
+    required this.favoriteJokes,
+  });
 
   @override
   State<Home> createState() => _HomeState();
@@ -44,6 +52,10 @@ class _HomeState extends State<Home> {
             onPressed: () {
               Navigator.pushNamed(context, '/random-joke');
             },
+          ),
+          IconButton(
+            icon: const Icon(Icons.favorite),
+            onPressed: () => Navigator.pushNamed(context, '/favorites'),
           ),
         ],
       ),

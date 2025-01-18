@@ -5,8 +5,9 @@ import 'joke_card.dart';
 
 class JokeList extends StatelessWidget {
   final List<Joke> jokes;
+  final void Function(Joke) onFavorite;
 
-  const JokeList({super.key, required this.jokes});
+  const JokeList({super.key, required this.jokes, required this.onFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,11 @@ class JokeList extends StatelessWidget {
       itemCount: jokes.length,
       itemBuilder: (context, index) {
         final joke = jokes[index];
-        return JokeCard(joke: joke);
+        return JokeCard(
+            joke: joke,
+            isFavorite: false,
+            onFavorite: onFavorite,
+        );
       },
     );
   }

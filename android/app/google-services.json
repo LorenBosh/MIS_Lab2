@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "295915133489",
+    "project_id": "laboratoriska-firebase-test",
+    "storage_bucket": "laboratoriska-firebase-test.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:295915133489:android:28c5ecad25ecfa91139310",
+        "android_client_info": {
+          "package_name": "com.example.lab2_211084"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdanfGp7U60FyE-MMagcjbrBOT-2DgNjc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

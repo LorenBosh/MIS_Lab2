@@ -6,7 +6,9 @@ import '../services/api_services.dart';
 import '../widgets/jokes/joke_card.dart';
 
 class RandomJoke extends StatefulWidget{
-  const RandomJoke({super.key});
+  final void Function(Joke) onFavorite;
+
+  const RandomJoke({super.key, required this.onFavorite});
 
   @override
   State<RandomJoke> createState() => _RandomJokeState();
@@ -51,7 +53,12 @@ class _RandomJokeState extends State<RandomJoke>{
           style: TextStyle(fontSize: 18),
         ),
       )
-          : Center(child: JokeCard(joke: joke!)), // Use JokeCard when joke is loaded
+          : Center(child: JokeCard(
+          joke: joke!,
+          isFavorite: false,
+          onFavorite: widget.onFavorite,
+      )
+      ),
     );
   }
 }
